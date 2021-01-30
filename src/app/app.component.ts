@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CovertorService } from './service/covertor.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo-ui';
+
+  constructor(convertorService: CovertorService) {
+    convertorService.convert('temperature', 'metric', 41.55).subscribe(data => {
+      console.log(data);
+    });
+  }
 }
