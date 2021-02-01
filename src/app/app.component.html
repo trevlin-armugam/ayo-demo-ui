@@ -1,15 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<form>
+  <div class="body">
   <div style="text-align:center">
   <h1>
     Ayo4U Convertor App
   </h1>
 </div>
-<h4>Please select your measurement, SI unit to convert into, and specify a value: </h4>
+<h4>Please select your measurement, SI unit to convert into, then specify a value: </h4>
 <div class="side-by-side">
   <div>
-    <mat-form-field>
-      <mat-select placeholder="Select Measurment" [(ngModel)]="selectedMeasurement" name="measurement">
+    <label>Measurement: </label>
+    <mat-form-field class="user-input">
+      <mat-select [(ngModel)]="selectedMeasurement" name="measurement">
         <mat-option  *ngFor="let measurement of measurements" [value]="measurement">
           {{measurement}}
         </mat-option>
@@ -17,8 +18,9 @@
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field>
-      <mat-select placeholder="Select SI unit" [(ngModel)]="selectedSiUnit" name="siUnit">
+    <label>Convert to: </label>
+    <mat-form-field  class="user-input">
+      <mat-select [(ngModel)]="selectedSiUnit" name="siUnit">
         <mat-option  *ngFor="let siUnit of siUnits" [value]="siUnit">
           {{siUnit}}
         </mat-option>
@@ -26,10 +28,14 @@
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Quick Search">
+    <label>Value: </label>
+    <mat-form-field class="user-input">
+      <input [(ngModel)]="specifiedValue" matInput (keyup)="applyConversion($event.target.value)">
     </mat-form-field>
   </div>
 </div>
-</form>
+<div style="padding-left: 33%; padding-top: 5%;">
+  <output *ngIf="showOutput" style="padding-left: 5%;">Converted Value: {{convertedValue}}</output>
+</div>
+</div>
 

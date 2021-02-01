@@ -14,11 +14,11 @@ export class CovertorService {
   }
 
   getMeasurements() {
-    return this.http.get([this.SERVER_URL].join('/convert/measurements'));
+    return this.http.get(this.SERVER_URL + '/convert/measurements');
   }
 
   getSIUnits() {
-    return this.http.get([this.SERVER_URL].join('/convert/siunits'));
+    return this.http.get(this.SERVER_URL + '/convert/si-units');
   }
 
   convert(measurment: string, siunit: string, value: number) {
